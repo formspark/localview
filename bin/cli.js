@@ -26,7 +26,9 @@ if (!port) {
       console.log(`URL: ${url}`);
       console.log("");
       console.log(code);
-      console.log("Scan the above QR code to visit the exposed URL.");
+      console.log(
+        "To visit the exposed URL, scan the QR code with your mobile device."
+      );
     });
   });
 }
