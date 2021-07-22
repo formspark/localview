@@ -5,15 +5,17 @@ Easily access a localhost website from your mobile device.
 ## Usage
 
 1. Start your localhost server.
-2. Create a QR code with localview, the `--port` argument should match the port exposed by the server.
+2. Create a QR code with localview.
 
 ```bash
 npx localview --port 8080
 ```
 
-![Screenshot](./static/screenshot.png)
+The `--port` argument should match the port exposed by the server.
 
 3. To visit the exposed URL, scan the QR code with your mobile device.
+
+![Screenshot](./static/screenshot.png)
 
 ## Notes
 
