@@ -2,7 +2,7 @@
   "name": "localview",
   "description": "Easily access a localhost website from your mobile device",
   "private": false,
-  "version": "0.0.8",
+  "version": "0.0.9",
   "author": "Bjorn Krols (https://formspark.io)",
   "license": "MIT",
   "keywords": [
