@@ -4,7 +4,7 @@ Easily access a localhost website from your mobile device.
 
 ## Usage
 
-1. Start your localhost server
+1. Start your localhost server.
 2. Create a QR code with localview, the `--port` argument should match the port exposed by the server.
 
 ```bash
