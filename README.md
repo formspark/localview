@@ -18,7 +18,7 @@ npx localview --port 8080
 ## Notes
 
 - Both the server and the mobile device need to be connected to the same network.
-- You may need to set you server's host to 0.0.0.0.
+- You may need to set you server's host to `0.0.0.0`.
 
 ## License
 

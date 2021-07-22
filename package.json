@@ -6,6 +6,7 @@
   "author": "Bjorn Krols (https://formspark.io)",
   "license": "MIT",
   "keywords": [
+    "cli",
     "localhost",
     "mobile"
   ],
