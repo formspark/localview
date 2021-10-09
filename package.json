@@ -23,20 +23,16 @@
   ],
   "bin": "bin/cli.js",
   "scripts": {
-    "format": "prettier --write . --ignore-path .gitignore"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
+    "format": "prettier --write . --ignore-path .gitignore",
+    "prepare": "husky install"
   },
   "dependencies": {
     "qrcode-terminal": "^0.12.0",
-    "yargs": "^17.0.1"
+    "yargs": "^17.2.1"
   },
   "devDependencies": {
-    "husky": "^7.0.1",
-    "prettier": "^2.3.2",
+    "husky": "^7.0.2",
+    "prettier": "^2.4.1",
     "pretty-quick": "^3.1.1"
   }
 }
