@@ -2,7 +2,7 @@
   "name": "localview",
   "description": "Easily access a localhost website from your mobile device",
   "private": false,
-  "version": "0.0.9",
+  "version": "1.0.0-rc.0",
   "author": "Bjorn Krols (https://formspark.io)",
   "license": "MIT",
   "keywords": [
@@ -19,20 +19,30 @@
     "url": "https://github.com/formspark/localview/issues"
   },
   "files": [
-    "bin"
+    "dist"
   ],
-  "bin": "bin/cli.js",
+  "bin": "dist/cli.js",
+  "engines": {
+    "node": "^20.19.0 || ^22.12.0 || >=23"
+  },
   "scripts": {
+    "build": "tsup src/cli.ts --format cjs --clean",
     "format": "prettier --write . --ignore-path .gitignore",
-    "prepare": "husky install"
+    "lint": "tsc --noEmit",
+    "prepare": "husky",
+    "start": "tsup src/cli.ts --format cjs --watch"
   },
   "dependencies": {
     "qrcode-terminal": "^0.12.0",
-    "yargs": "^17.3.0"
+    "yargs": "^18.0.0"
   },
   "devDependencies": {
-    "husky": "^7.0.4",
-    "prettier": "^2.5.1",
-    "pretty-quick": "^3.1.2"
+    "@types/node": "^25.6.2",
+    "@types/qrcode-terminal": "^0.12.2",
+    "@types/yargs": "^17.0.35",
+    "husky": "^9.1.7",
+    "prettier": "^3.8.3",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3"
   }
 }
