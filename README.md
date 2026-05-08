@@ -22,8 +22,6 @@ Open your local dev server on your phone with a QR scan.
 - **Mobile UI checks**: touch targets, breakpoints, virtual keyboards, and the OS chrome that desktop devtools approximations can't fully replicate.
 - **Real-device APIs**: `getUserMedia`, geolocation, device orientation, `vibrate`, and other sensor or permission flows that only work on a real phone.
 - **PWA install flow**: Add-to-home-screen prompts, splash screens, standalone-mode display.
-- **Multi-device review**: hand the QR to a teammate or designer on the same wifi; they're on your branch in seconds, no deploy needed.
-- **Cross-browser sanity**: catch mobile Safari and Android Chrome quirks before pushing to staging.
 
 ## Options
 
