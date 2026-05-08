@@ -2,7 +2,11 @@
 
 Open your local dev server on your phone with a QR scan.
 
-`localview` finds your machine's LAN IP, builds a URL pointing at your dev server's port, and prints a QR code in the terminal. Scan it from any device on the same network. No tunnels, no signup, no daemon.
+`localview` finds your machine's LAN IP, builds a URL pointing at your dev server's port, and prints a QR code in the terminal.
+
+Scan it from any device on the same network.
+
+No tunnels, no signup, no daemon.
 
 ![Demo](./static/demo.gif)
 
