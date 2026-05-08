@@ -1,26 +1,34 @@
 # localview
 
-Easily access a localhost website from your mobile device.
+Open your local dev server on your phone with a QR scan.
 
-## Usage
-
-1. Start your localhost server.
-2. Create a QR code with localview.
-
-```bash
-npx localview --port 8080
-```
-
-3. To visit the exposed URL, scan the QR code with your mobile device.
+`localview` finds your machine's LAN IP, builds a URL pointing at your dev server's port, and prints a QR code in the terminal. Scan it from any device on the same network. No tunnels, no signup, no daemon.
 
 ![Demo](./static/demo.gif)
+
+## Quick start
+
+1. Start your dev server.
+2. In a separate terminal, run `localview` with the same port:
+
+   ```bash
+   npx localview --port 8080
+   ```
+
+3. Scan the QR code with your phone's camera. The page opens in the default browser.
+
+## Use cases
+
+- **Mobile UI checks**: touch targets, breakpoints, virtual keyboards, and the OS chrome that desktop devtools approximations can't fully replicate.
+- **Real-device APIs**: `getUserMedia`, geolocation, device orientation, `vibrate`, and other sensor or permission flows that only work on a real phone.
+- **PWA install flow**: Add-to-home-screen prompts, splash screens, standalone-mode display.
 
 ## Options
 
 | Flag           | Description                                                   |
 | -------------- | ------------------------------------------------------------- |
-| `--port`, `-P` | Port exposed by the local server. **Required.**               |
-| `--path`       | Path appended to the URL (e.g. `/admin`). Optional.           |
+| `--port`, `-P` | Port your dev server is bound to. **Required.**               |
+| `--path`       | Path appended to the URL (e.g. `/admin`).                     |
 | `--host`       | Override the auto-detected LAN IP (Docker, multi-NIC, demos). |
 
 ### Examples
@@ -33,13 +41,13 @@ npx localview --port 3000 --path /admin
 npx localview --port 8080 --host 192.168.1.42
 ```
 
-If multiple non-internal IPv4 interfaces are detected (e.g. wifi + VPN + Docker bridges), localview prints a numbered list and asks which one to use; press Enter to accept the smart default.
+If your machine has multiple LAN interfaces (wifi + VPN + Docker bridges, for example), `localview` shows an interactive picker with arrow-key navigation. The smart-sorted default (wifi and ethernet first) is selected by pressing Enter.
 
-## Notes
+## Requirements
 
-- Requires Node.js `^20.19.0`, `^22.12.0`, or `>=23`.
-- Both the server and the mobile device need to be connected to the same network.
-- You may need to set your server's host to `0.0.0.0`.
+- Node.js `^20.19.0`, `^22.12.0`, or `>=23`.
+- Your dev server and your phone connected to the same network.
+- Your dev server must accept connections from its LAN address. Many frameworks bind to `127.0.0.1` only by default; bind to `0.0.0.0` instead (the exact flag depends on your tool: `--host 0.0.0.0`, `--bind 0.0.0.0`, `HOST=0.0.0.0`, etc.) to expose it on the LAN.
 
 ## License
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import os from "os";
-import readline from "readline";
+import { isCancel, select } from "@clack/prompts";
 import yargs from "yargs/yargs";
 import { hideBin } from "yargs/helpers";
 import qrcode from "qrcode-terminal";
@@ -74,34 +74,21 @@ async function pickAddress(): Promise<string | null> {
     return first.address;
   }
 
-  console.log("Multiple network interfaces detected:");
-  candidates.forEach((c, i) => {
-    const label = c.kind === "other" ? "" : ` (${c.kind})`;
-    console.log(`  ${i + 1}. ${c.name}${label} — ${c.address}`);
+  const selected = await select({
+    message: "Select network interface",
+    initialValue: candidates[0].address,
+    options: candidates.map((c) => {
+      const label = c.kind === "other" ? c.name : `${c.name} (${c.kind})`;
+      return { value: c.address, label, hint: c.address };
+    }),
   });
-  const answer = await prompt(
-    `Select interface [1-${candidates.length}] (default: 1): `,
-  );
-  const trimmed = answer.trim();
-  const choice = trimmed === "" ? 1 : Number(trimmed);
-  if (!Number.isInteger(choice) || choice < 1 || choice > candidates.length) {
-    console.log("Invalid selection.");
-    process.exit(1);
-  }
-  return candidates[choice - 1].address;
-}
 
-function prompt(question: string): Promise<string> {
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-  return new Promise((resolve) => {
-    rl.question(question, (answer) => {
-      rl.close();
-      resolve(answer);
-    });
-  });
+  if (isCancel(selected)) {
+    console.log("Cancelled.");
+    process.exit(0);
+  }
+
+  return selected as string;
 }
 
 function normalizePath(value: string): string {
